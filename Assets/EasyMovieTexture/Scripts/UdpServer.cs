@@ -10,6 +10,7 @@ public class UdpServer : MonoBehaviour
 	//以下默认都是私有的成员 
 	Socket socket; //目标socket 
 	EndPoint clientEnd; //客户端 
+	EndPoint clientEnd1; //客户端 
 	IPEndPoint ipEnd; //侦听端口 
 	string recvStr; //接收的字符串 
 	string sendStr; //发送的字符串 
@@ -31,8 +32,8 @@ void InitSocket()
     //定义客户端
     IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
     clientEnd = (EndPoint)sender;
+    clientEnd1 = (EndPoint)(new IPEndPoint(IPAddress.Parse("192.168.2.124"), 31500));
     print("waiting for UDP dgram");
-
     //开启一个线程连接，必须的，否则主线程卡死
     connectThread = new Thread(new ThreadStart(SocketReceive));
     connectThread.Start();
@@ -40,12 +41,29 @@ void InitSocket()
 
 public void SocketSend(string sendStr)
 {
+    // print("Send");
+    // IPEndPoint udpPoint = new IPEndPoint(IPAddress.Any, 10005);
+    // UdpClient udpClient = new UdpClient(udpPoint);
+    // //UdpClient udpClient = new UdpClient();
+    // sendData = new byte[1024];
+    // sendData = Encoding.ASCII.GetBytes(sendStr);
+    // IPEndPoint targetPoint = new IPEndPoint(IPAddress.Parse("192.168.2.124"), 31500);
+    // udpClient.Send(sendData, sendData.Length, targetPoint);
+
+
+    // EndPoint clientEnd1 = (EndPoint)(new IPEndPoint(IPAddress.Parse("192.168.2.124"), 31500));
+    // print("clintEnd:");
+    // print(clientEnd.ToString());
+    if (clientEnd.ToString() != "0.0.0.0:0"){
+        clientEnd1 = clientEnd;
+    }
+    print(clientEnd1);
     //清空发送缓存
     sendData = new byte[1024];
     //数据类型转换
     sendData = Encoding.ASCII.GetBytes(sendStr);
     //发送给指定客户端
-    socket.SendTo(sendData, sendData.Length, SocketFlags.None, clientEnd);
+    socket.SendTo(sendData, sendData.Length, SocketFlags.None, clientEnd1);
 }
 
 //服务器接收

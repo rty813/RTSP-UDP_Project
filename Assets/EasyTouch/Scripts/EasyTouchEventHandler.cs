@@ -27,8 +27,8 @@ public class EasyTouchEventHandler : MonoBehaviour {
 	        float joyPositionX = move.joystickAxis.x;  
     	    float joyPositionY = move.joystickAxis.y;  
 			print(joyPositionX + " . " + joyPositionY);
-            gameObject.GetComponent<UdpServer>().SocketSend(joyPositionX.ToString()+","+joyPositionY.ToString());
             MedaiPlayerSampleGUI.str_show = joyPositionX.ToString()+","+joyPositionY.ToString();
+            gameObject.GetComponent<UdpServer>().SocketSend(joyPositionX.ToString()+","+joyPositionY.ToString());
 			// gameObject.GetComponent<UdpServer>().SocketSend("hello world");
 		}
     }  
