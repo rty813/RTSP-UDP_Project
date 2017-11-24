@@ -39,7 +39,7 @@ public class MedaiPlayerSampleGUI : MonoBehaviour {
 				url = "rtsp://rty813.xyz:28080/webcam";
 				break;
 			case 2:
-				url = "rtsp://vps.rty813.xyz:28080/webcam";
+				url = "rtsp://23.105.201.132:39554/webcam";
 				break;
 		}
 		scrMedia.m_strFileName = url;
@@ -69,47 +69,6 @@ public class MedaiPlayerSampleGUI : MonoBehaviour {
 		{
 			scrMedia.UnLoad();
 		}
-		
-		if( GUI.Button(new Rect(50,800,100,100), " " + m_bFinish))
-		{
-		
-		}
-		
-		// if( GUI.Button(new Rect(200,50,100,100),"SeekTo"))
-		// {
-		// 	scrMedia.SeekTo(10000);
-		// }
-
-
-		// if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING)
-		// {
-		// 	if( GUI.Button(new Rect(200,200,100,100),scrMedia.GetSeekPosition().ToString()))
-		// 	{
-		// 		scrMedia.SetSpeed(2.0f);
-		// 	}
-			
-		// 	if( GUI.Button(new Rect(200,350,100,100),scrMedia.GetDuration().ToString()))
-		// 	{
-		// 		scrMedia.SetSpeed(1.0f);
-		// 	}
-
-		// 	if( GUI.Button(new Rect(200,450,100,100),scrMedia.GetVideoWidth().ToString()))
-		// 	{
-				
-		// 	}
-
-		// 	if( GUI.Button(new Rect(200,550,100,100),scrMedia.GetVideoHeight().ToString()))
-		// 	{
-				
-		// 	}
-		// }
-
-		// if( GUI.Button(new Rect(200,650,100,100),scrMedia.GetCurrentSeekPercent().ToString()))
-		// {
-			
-		// }
-	
-
 	}
 	#endif
 

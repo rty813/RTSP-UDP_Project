@@ -32,7 +32,7 @@ void InitSocket()
     //定义客户端
     IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
     clientEnd = (EndPoint)sender;
-    clientEnd1 = (EndPoint)(new IPEndPoint(IPAddress.Parse("192.168.2.124"), 31500));
+    clientEnd1 = (EndPoint)(new IPEndPoint(IPAddress.Parse("23.105.201.132"), 31600));
     print("waiting for UDP dgram");
     //开启一个线程连接，必须的，否则主线程卡死
     connectThread = new Thread(new ThreadStart(SocketReceive));
@@ -41,19 +41,6 @@ void InitSocket()
 
 public void SocketSend(string sendStr)
 {
-    // print("Send");
-    // IPEndPoint udpPoint = new IPEndPoint(IPAddress.Any, 10005);
-    // UdpClient udpClient = new UdpClient(udpPoint);
-    // //UdpClient udpClient = new UdpClient();
-    // sendData = new byte[1024];
-    // sendData = Encoding.ASCII.GetBytes(sendStr);
-    // IPEndPoint targetPoint = new IPEndPoint(IPAddress.Parse("192.168.2.124"), 31500);
-    // udpClient.Send(sendData, sendData.Length, targetPoint);
-
-
-    // EndPoint clientEnd1 = (EndPoint)(new IPEndPoint(IPAddress.Parse("192.168.2.124"), 31500));
-    // print("clintEnd:");
-    // print(clientEnd.ToString());
     if (clientEnd.ToString() != "0.0.0.0:0"){
         clientEnd1 = clientEnd;
     }

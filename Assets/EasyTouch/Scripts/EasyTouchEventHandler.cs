@@ -11,7 +11,7 @@ public class EasyTouchEventHandler : MonoBehaviour {
     void OnJoystickMoveEnd(MovingJoystick move)  
     {  
         //停止时，角色恢复idle  
-        if (move.joystickName == "MainJoystick")  
+        if (move.joystickName == "New joystick")  
         {  
              print("Move End");
         }  
@@ -22,14 +22,19 @@ public class EasyTouchEventHandler : MonoBehaviour {
     void OnJoystickMove(MovingJoystick move)  
     {  
 
-		if (move.joystickName == "MainJoystick"){
+		if (move.joystickName == "New joystick"){
         	//获取摇杆中心偏移的坐标  
 	        float joyPositionX = move.joystickAxis.x;  
     	    float joyPositionY = move.joystickAxis.y;  
 			print(joyPositionX + " . " + joyPositionY);
-            MedaiPlayerSampleGUI.str_show = joyPositionX.ToString()+","+joyPositionY.ToString();
-            gameObject.GetComponent<UdpServer>().SocketSend(joyPositionX.ToString()+","+joyPositionY.ToString());
-			// gameObject.GetComponent<UdpServer>().SocketSend("hello world");
+            int x = (int)(550 + joyPositionX * 200) / 10 * 10;
+            int y = (int)(550 + joyPositionY * 250) / 10 * 10;
+            string strX = "1 " + x.ToString();
+            string strY = "2 " + y.ToString();
+
+            MedaiPlayerSampleGUI.str_show = strX + "; " + strY;
+            gameObject.GetComponent<UdpServer>().SocketSend(strX);
+            gameObject.GetComponent<UdpServer>().SocketSend(strY);
 		}
     }  
 }
